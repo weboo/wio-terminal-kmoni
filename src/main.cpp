@@ -108,7 +108,6 @@ long doHttpGet(String url, uint8_t *p_buffer, unsigned long *p_len)
   WiFiClient *stream = http.getStreamPtr();
 
   int len = http.getSize();
-  Serial.printf("len %d\n", len);
   if (len != -1 && (unsigned long)len > *p_len) {
     return -1;
   }
@@ -184,9 +183,6 @@ void GIFDraw(GIFDRAW *pDraw)
 
   iWidth = pDraw->iWidth;
   usPalette = pDraw->pPalette;
-  for (uint i=0; i<sizeof(usPalette); i++) {
-    Serial.printf("%d ", usPalette[i]);
-  }
 
   y = pDraw->iY + pDraw->y; // current line
   s = pDraw->pPixels;
@@ -259,7 +255,6 @@ void checkKmoni() {
 
   // 予想震度を取得
   sprintf(gif_url, "http://www.kmoni.bosai.go.jp/data/map_img/EstShindoImg/eew/%s/%s.eew.gif", gif_dir_path, gif_file_name);
-  Serial.println(gif_url);
   file_buffer_size = sizeof(file_buffer);
   if (doHttpGet(gif_url, file_buffer, &file_buffer_size) == 0) {
     // EEWをダウンロードできたときから指定回数分処理が回るまでLCDを点灯
