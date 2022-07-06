@@ -22,7 +22,6 @@ M5Stack版とできるだけ同じ動作になるようにしていますが、�
   - [arduino-libraries/NTPClient](https://github.com/arduino-libraries/NTPClient)
   - [bitbank2/AnimatedGIF](https://github.com/bitbank2/AnimatedGIF)
   - [LovyanGFX](https://github.com/Lovyan03/LovyanGFX)
-  - [mbed-kazushi2008/HTTPClient](https://os.mbed.com/users/kazushi2008/code/HTTPClient/)
   - [cyrusbuilt/SAMCrashMonitor](https://github.com/cyrusbuilt/SAMCrashMonitor)
 
 
