@@ -310,7 +310,7 @@ void setup() {
   lcd.setTextWrap(true, true);
   lcd.fillScreen(TFT_BLUE);
   lcd.setTextColor(TFT_WHITE);
-  lcd.setTextSize(2);
+  lcd.setFont(&fonts::Font4);
   lcd.println(F("[KYOSHIN]"));
   lcd.println();
 
@@ -335,7 +335,7 @@ void setup() {
   timeClient.update();
 
   if (!rtc.begin()) {
-      Serial.println(F("Couldn't find RTC"));
+      lcd.println(F("Couldn't find RTC"));
       while (1) delay(10); // stop operating
   }
   rtc.adjust(timeClient.getEpochTime());
@@ -408,23 +408,23 @@ void loop() {
     displayOnCount = 0;
     playTone(1200, 50);
     delay(20);
-    lcd.fillRoundRect(80, 100, 160, 36, 5, TFT_BLACK);
+    lcd.fillRoundRect(80, 100, 160, 40, 5, TFT_BLACK);
     lcd.setTextColor(TFT_WHITE);
     lcd.setCursor(100, 110);
-    lcd.print("LOADING...");
+    lcd.print(F("LOADING..."));
   }
   else if (digitalRead(WIO_KEY_B) == LOW) {
     // ボタンB -> ミュート
-    lcd.fillRoundRect(80, 100, 160, 36, 5, TFT_BLACK);
+    lcd.fillRoundRect(80, 100, 160, 40, 5, TFT_BLACK);
     lcd.setTextColor(TFT_WHITE);
     if (isMuted) {
       isMuted = false;
-      lcd.setCursor(120, 110);
-      lcd.print("MUTE OFF");
+      lcd.setCursor(100, 110);
+      lcd.print(F("MUTE OFF"));
     } else {
       isMuted = true;
-      lcd.setCursor(140, 110);
-      lcd.print("MUTE");
+      lcd.setCursor(130, 110);
+      lcd.print(F("MUTE"));
     }
   }
   else if (digitalRead(WIO_KEY_A) == LOW) {
